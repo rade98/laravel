@@ -9,7 +9,7 @@
         @onDelete="onDelete"
         @onEdit="onEdit"
       />
-      
+
     </div>
   </div>
 </template>
@@ -31,6 +31,7 @@ export default {
     return {
       url: "http://localhost:8000/api/leads",
       leads: [],
+      laravelData: {},
       form: { name: "", lastname: "", phoneNumber: "", birthday: "", isEdit: false },
       loader: false
     };
@@ -47,10 +48,11 @@ export default {
           page = 1;
       }
       axios.get('http://localhost:8000/api/leads?page=' + page).then(data => {
-        this.customers = data.data.data;
+        this.laravelData = data.data; 
         this.loader = false;
       });
     },
+    
     deleteCustomer(id) {
       this.loader = true;
 

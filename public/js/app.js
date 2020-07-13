@@ -1944,6 +1944,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       url: "http://localhost:8000/api/leads",
       leads: [],
+      laravelData: {},
       form: {
         name: "",
         lastname: "",
@@ -1969,7 +1970,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://localhost:8000/api/leads?page=' + page).then(function (data) {
-        _this.customers = data.data.data;
+        _this.laravelData = data.data;
         _this.loader = false;
       });
     },
@@ -2093,6 +2094,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Customer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Customer */ "./resources/js/components/Customer.vue");
+//
+//
+//
 //
 //
 //
@@ -39245,23 +39249,33 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "rade-table" } }, [
-    _c("div", { staticClass: "table-responsive" }, [
-      _c("table", { staticClass: "table table-dark" }, [
-        _vm._m(0),
+    _c(
+      "div",
+      { staticClass: "table-responsive" },
+      [
+        _c("table", { staticClass: "table table-dark" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.laravelData.data, function(customer) {
+              return _c("Customer", {
+                key: customer.id,
+                attrs: { customer: customer },
+                on: { onDelete: _vm.onDelete, onEdit: _vm.onEdit }
+              })
+            }),
+            1
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.customers, function(customer) {
-            return _c("Customer", {
-              key: customer.id,
-              attrs: { customer: customer },
-              on: { onDelete: _vm.onDelete, onEdit: _vm.onEdit }
-            })
-          }),
-          1
-        )
-      ])
-    ])
+        _c("pagination", {
+          attrs: { data: _vm.laravelData },
+          on: { "pagination-change-page": _vm.getCustomers }
+        })
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [

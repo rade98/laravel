@@ -14,7 +14,7 @@
 
         <tbody>
           <Customer
-            v-for="customer in customers"
+            v-for="customer in laravelData.data"
             :key="customer.id"
             :customer="customer"
             @onDelete="onDelete"
@@ -22,6 +22,9 @@
           />
         </tbody>
       </table>
+      <pagination
+        :data="laravelData" @pagination-change-page="getCustomers"
+      ></pagination>
     </div>
 </div>
 </template>
@@ -37,6 +40,7 @@ export default {
       type: Array
     }
   },
+  
   methods: {
 
     onDelete(id) {
