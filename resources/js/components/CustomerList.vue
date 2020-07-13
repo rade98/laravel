@@ -36,7 +36,7 @@ export default {
     Customer
   },
   props: {
-    customers: {
+    laravelData: {
       type: Array
     }
   },

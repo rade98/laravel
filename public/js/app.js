@@ -2131,7 +2131,7 @@ __webpack_require__.r(__webpack_exports__);
     Customer: _Customer__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    customers: {
+    laravelData: {
       type: Array
     }
   },
@@ -39164,7 +39164,7 @@ var render = function() {
         _vm.loader ? _c("Loader") : _vm._e(),
         _vm._v(" "),
         _c("CustomerList", {
-          attrs: { customers: _vm.customers },
+          attrs: { customers: _vm.laravelData },
           on: { onDelete: _vm.onDelete, onEdit: _vm.onEdit }
         })
       ],

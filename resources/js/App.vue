@@ -5,7 +5,7 @@
       <MyForm :form="form" @onFormSubmit="onFormSubmit" />
       <Loader v-if="loader" />
       <CustomerList
-        :customers="customers"
+        :customers="laravelData"
         @onDelete="onDelete"
         @onEdit="onEdit"
       />
@@ -52,7 +52,7 @@ export default {
         this.loader = false;
       });
     },
-    
+
     deleteCustomer(id) {
       this.loader = true;
 
